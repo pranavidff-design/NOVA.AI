@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_cinematic"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nova's Memory &amp; Habits"
+            android:textColor="@color/nova_text"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Memory enabled"
+                android:textColor="@color/nova_text" />
+
+            <Switch
+                android:id="@+id/memoryEnabledSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Teach a rule in natural language -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Teach Nova a rule"
+            android:textColor="@color/nova_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Describe it in your own words — e.g. &quot;Whenever I say ghar aa gaya hoon, turn the flashlight off and open the Wi-Fi panel.&quot;"
+            android:textColor="@color/nova_text_dim"
+            android:textSize="13sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:background="@drawable/bg_panel"
+            android:padding="12dp"
+            android:id="@+id/ruleInputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minLines="2"
+            android:gravity="top"
+            android:hint="Whenever I say '...', do ..."
+            android:textColor="@color/nova_text"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            style="@style/NovaButton"
+            android:id="@+id/teachRuleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Teach Nova"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/ruleTeachStatusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/nova_text_dim"
+            android:textSize="13sp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            style="@style/NovaButton"
+            android:id="@+id/manageRulesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manage all rules &amp; routines"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Long-term remembered facts -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remembered facts"
+            android:textColor="@color/nova_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <Button
+            style="@style/NovaButton"
+            android:id="@+id/clearAllButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clear all memories"
+            android:layout_marginBottom="12dp" />
+
+        <LinearLayout
+            android:id="@+id/memoryListContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </LinearLayout>
+
+</ScrollView>

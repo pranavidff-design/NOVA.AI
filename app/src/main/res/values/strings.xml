@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nova</string>
+    <string name="status_idle">Tap the orb to talk to Nova</string>
+    <string name="status_listening">Listening…</string>
+    <string name="status_thinking">Thinking…</string>
+    <string name="status_speaking">Speaking…</string>
+</resources>

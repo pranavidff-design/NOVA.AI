@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="nova_bg_top">#131826</color>
+    <color name="nova_bg_mid">#0E1220</color>
+    <color name="nova_bg_bottom">#0B0E14</color>
+    <color name="nova_cyan">#4CE0D2</color>
+    <color name="nova_violet">#8B5CF6</color>
+    <color name="nova_amber">#FFB86B</color>
+    <color name="nova_text">#E8ECF1</color>
+    <color name="nova_text_dim">#9CA6B8</color>
+    <color name="nova_panel">#10141F</color>
+    <color name="nova_border">#1D2433</color>
+</resources>

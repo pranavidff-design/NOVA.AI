@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- RECORD_AUDIO: required for any listening at all (tap-to-talk and wake word).
+         FOREGROUND_SERVICE + FOREGROUND_SERVICE_MICROPHONE: required by Android 14+ to run a
+         real background listening service (not a fake one) — the OS enforces that a service
+         doing continuous mic capture must be a declared foreground service of type "microphone".
+         POST_NOTIFICATIONS: required (Android 13+) to show the persistent "Nova is listening"
+         notification a foreground service must display — Android will not let a mic-type
+         foreground service run silently/invisibly, by design, so users always know it's active.
+         READ_CONTACTS: required only for "send X to <name> on WhatsApp" — to resolve the name
+         to a phone number. Requested at runtime, only when that feature is first used. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- Tier 2+ permissions NOT declared here on purpose: SEND_SMS, CALL_PHONE, camera
+         auto-capture, contacts WRITE, accounts. Nova never silently sends anything or
+         auto-taps buttons inside other apps (e.g. no AccessibilityService driving WhatsApp's
+         UI) — every message send still ends with the user's own tap inside WhatsApp itself. -->
+
+    <!-- Android 11+ hides installed-app info from apps by default (package visibility).
+         Without this, PackageManager.getLaunchIntentForPackage("com.whatsapp") can return
+         null even when WhatsApp IS installed, making "open WhatsApp" wrongly report it's
+         missing. This declares only what Nova actually needs to check for — not a blanket
+         QUERY_ALL_PACKAGES permission, which Play Store restricts heavily and this app
+         doesn't need. -->
+    <queries>
+        <package android:name="com.whatsapp" />
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".NovaApp"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Nova"
+        android:theme="@style/Theme.Nova"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Nova">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MemoryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Nova" />
+
+        <activity
+            android:name=".RoutinesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Nova" />
+
+        <!-- Real background wake-word listening. This is a genuine foreground service —
+             Android requires the persistent notification below; there is no way to listen
+             continuously in the background without the user seeing that it's active, and
+             Nova does not attempt to hide or fake that. -->
+        <service
+            android:name=".NovaWakeService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+
+        <!-- Handles Approve/Deny taps on the background-approval notification
+             (SensitiveActionReceiver). Static receivers MUST be declared here —
+             without this entry the notification buttons would silently do nothing. -->
+        <receiver
+            android:name=".SensitiveActionReceiver"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,30 @@
+{
+  "_comment": "PLACEHOLDER FILE — the app will build with this, but the cloud brain will stay unconfigured (Nova just uses the local model) until you replace this file with your real one. Get the real file from: Firebase console -> your project -> Project settings -> your Android app (com.nova.assistant) -> download google-services.json. Then upload it to GitHub at this exact path (app/google-services.json), overwriting this placeholder. Full steps in README 'Cloud brain setup'.",
+  "project_info": {
+    "project_number": "000000000000",
+    "project_id": "nova-placeholder-project",
+    "storage_bucket": "nova-placeholder-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:000000000000:android:0000000000000000000000",
+        "android_client_info": {
+          "package_name": "com.nova.assistant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "PLACEHOLDER_KEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

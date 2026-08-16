@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dark radial wash behind the orb — the "cinematic" backdrop. Plain vector
+     gradient, negligible GPU cost, no image assets needed. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="linear"
+                android:angle="90"
+                android:startColor="@color/nova_bg_top"
+                android:centerColor="@color/nova_bg_mid"
+                android:endColor="@color/nova_bg_bottom" />
+        </shape>
+    </item>
+</layer-list>
